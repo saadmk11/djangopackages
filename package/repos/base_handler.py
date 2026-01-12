@@ -91,7 +91,7 @@ class BaseHandler:
 
             regex = r"^{0},|,{0},|{0}$".format(repo_url)
             return list(
-                Package.objects.filter(
+                Package.objects.active().filter(
                     participants__regex=regex, repo_url__regex=self.repo_regex
                 )
             )

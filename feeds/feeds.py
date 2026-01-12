@@ -16,7 +16,7 @@ class RssLatestPackagesFeed(Feed):
 
     def items(self):
         """Returns 15 most recently created repositories"""
-        return Package.objects.all().order_by("-created")[:15]
+        return Package.objects.active().order_by("-created")[:15]
 
     def item_title(self, item):
         """Get title of the repository"""

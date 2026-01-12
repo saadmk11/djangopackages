@@ -195,13 +195,15 @@ class PackageFlagView(LoginRequiredMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         self.package = get_object_or_404(
-            Package.objects.annotate(
+            Package.objects.active()
+            .annotate(
                 _has_approved_flag=Exists(
                     FlaggedPackage.objects.filter(
                         package_id=OuterRef("pk"), approved_flag=True
                     )
                 )
-            ).exclude(_has_approved_flag=True),
+            )
+            .exclude(_has_approved_flag=True),
             slug=self.kwargs["slug"],
         )
         return super().dispatch(request, *args, **kwargs)
@@ -404,7 +406,11 @@ class PackageRulesView(DetailView):
     slug_url_kwarg = "slug"
 
     def get_queryset(self):
-        return Package.objects.select_related("category").prefetch_related("grid_set")
+        return (
+            Package.objects.active()
+            .select_related("category")
+            .prefetch_related("grid_set")
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -510,7 +516,7 @@ class PackageFetchDataView(LoginRequiredMixin, RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         package = get_object_or_404(
-            Package.objects.only("slug"), slug=self.kwargs.get("slug")
+            Package.objects.active().only("slug"), slug=self.kwargs.get("slug")
         )
         async_task("package.tasks.fetch_package_data_task", package.slug)
         messages.info(self.request, "Package data is being refreshed")
@@ -820,6 +826,7 @@ class MostLikedPackageListView(ListView):
         return (
             super()
             .get_queryset()
+            .active()
             .select_related("category")
             .annotate(distinct_favs=Count("favorite__favorited_by", distinct=True))
             .filter(distinct_favs__gt=0)

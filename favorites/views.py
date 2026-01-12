@@ -13,7 +13,7 @@ class FavoritePackage(View):
             return HttpResponseClientRedirect(settings.LOGIN_URL)
 
         try:
-            package = Package.objects.get(id=id)
+            package = Package.objects.active().get(id=id)
         except Package.DoesNotExist:
             messages.error(request, "Package does not exist")
             return HttpResponseClientRedirect("/")
@@ -32,7 +32,7 @@ class UnFavoritePackage(View):
             return HttpResponseClientRedirect(settings.LOGIN_URL)
 
         try:
-            package = Package.objects.get(id=id)
+            package = Package.objects.active().get(id=id)
         except Package.DoesNotExist:
             messages.error(request, "Package does not exist")
             return HttpResponseClientRedirect("/")

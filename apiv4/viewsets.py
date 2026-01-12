@@ -35,7 +35,7 @@ class PackageViewSet(MultiLookupFieldMixin, viewsets.ReadOnlyModelViewSet):
     API endpoint that allows packages to be viewed or edited.
     """
 
-    queryset = Package.objects.all().order_by("-id")
+    queryset = Package.objects.active().order_by("-id")
     serializer_class = PackageSerializer
     paginate_by = 20
 

@@ -520,7 +520,9 @@ class AjaxPackageSearchView(ListView):
         if not q:
             return Package.objects.none()
 
-        qs = Package.objects.filter(Q(title__icontains=q) | Q(repo_url__icontains=q))
+        qs = Package.objects.active().filter(
+            Q(title__icontains=q) | Q(repo_url__icontains=q)
+        )
 
         if grid_slug:
             qs = qs.exclude(gridpackage__grid__slug=grid_slug)

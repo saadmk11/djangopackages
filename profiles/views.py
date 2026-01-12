@@ -150,7 +150,7 @@ class ProfileFavoritePackagesView(ProfilePackageBaseView):
         )
         if not self.profile.share_favorites and self.request.user != self.profile.user:
             raise PermissionDenied
-        return Package.objects.filter(favorite__favorited_by=self.profile.user)
+        return Package.objects.active().filter(favorite__favorited_by=self.profile.user)
 
 
 class ProfileExtraFieldCreateView(LoginRequiredMixin, CreateView):

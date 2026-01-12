@@ -68,7 +68,7 @@ def calc_package_weight(*, package: Package) -> int:
 
 
 def index_packages(verbose: bool = False):
-    for package in Package.objects.all().iterator():
+    for package in Package.objects.active().iterator():
         weight = calc_package_weight(package=package)
 
         if verbose:

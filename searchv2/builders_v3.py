@@ -68,7 +68,7 @@ def index_packages(*, verbose: bool = False):
     # package_score = calc_package_weight(package=package, rules=rules, max_score=100)
     # print(json.dumps(package_score, indent=2))
 
-    for package in Package.objects.all().iterator():
+    for package in Package.objects.active().iterator():
         try:
             package_score = calc_package_weight(
                 package=package, rules=rules, max_score=100
