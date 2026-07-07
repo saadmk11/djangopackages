@@ -1,5 +1,9 @@
 <!-- GENERATOR_PLACEHOLDER -->
 
+## [2026-07-06]
+### Changed
+- Fix `/health/` -&gt; `500` by configuring the Redis check for `django-health-check` `4.x` ([#1626](https://github.com/djangopackages/djangopackages/pull/1626))
+
 ## [2026-07-03]
 ### Changed
 - ⬆️ Bump the all-dependencies group with 6 updates ([#1623](https://github.com/djangopackages/djangopackages/pull/1623))
