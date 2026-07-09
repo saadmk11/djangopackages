@@ -1,5 +1,9 @@
 <!-- GENERATOR_PLACEHOLDER -->
 
+## [2026-07-08]
+### Changed
+- ⬆️ Bump the all-dependencies group with 7 updates ([#1631](https://github.com/djangopackages/djangopackages/pull/1631))
+
 ## [2026-07-07]
 ### Changed
 - Reformat HTML templates with rustywind 0.25.0 ([#1629](https://github.com/djangopackages/djangopackages/pull/1629))
