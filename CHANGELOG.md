@@ -1,5 +1,10 @@
 <!-- GENERATOR_PLACEHOLDER -->
 
+## [2026-07-11]
+### Changed
+- ⬆️ Bump pip from 26.1 to 26.1.2 ([#1632](https://github.com/djangopackages/djangopackages/pull/1632))
+- ⬆️ Bump soupsieve from 2.8 to 2.8.4 ([#1633](https://github.com/djangopackages/djangopackages/pull/1633))
+
 ## [2026-07-08]
 ### Changed
 - ⬆️ Bump the all-dependencies group with 7 updates ([#1631](https://github.com/djangopackages/djangopackages/pull/1631))
