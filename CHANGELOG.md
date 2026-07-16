@@ -1,5 +1,10 @@
 <!-- GENERATOR_PLACEHOLDER -->
 
+## [2026-07-15]
+### Changed
+- ⬆️ Bump the all-dependencies group with 6 updates ([#1636](https://github.com/djangopackages/djangopackages/pull/1636))
+- Add Support for Dark Mode ([#1634](https://github.com/djangopackages/djangopackages/pull/1634))
+
 ## [2026-07-13]
 ### Changed
 - [prek]: auto-update hooks ([#1635](https://github.com/djangopackages/djangopackages/pull/1635))
